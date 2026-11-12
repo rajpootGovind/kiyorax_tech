@@ -33,6 +33,23 @@ export async function createEnquiry(
       return;
     }
 
+    // Idempotency guard: treat an identical enquiry submitted again within a
+    // short window as the same request instead of creating a duplicate record.
+    const duplicateWindow = new Date(Date.now() - 10 * 60 * 1000);
+    const duplicate = await Enquiry.exists({
+      email: parsed.data.email,
+      projectDescription: parsed.data.projectDescription,
+      createdAt: { $gte: duplicateWindow },
+    });
+
+    if (duplicate) {
+      res.status(200).json({
+        success: true,
+        message: "We have already received this enquiry. Our team will connect with you soon.",
+      });
+      return;
+    }
+
     const enquiry = await Enquiry.create({
       ...parsed.data,
       status: "New",

@@ -17,9 +17,9 @@ export const technologyGroups: TechnologyGroup[] = [
     index: "01",
     items: [
       { name: "React", icon: "react", hex: "#61DAFB", note: "Component architecture" },
-      { name: "Next.js", icon: "nextdotjs", hex: "#FFFFFF", note: "Full-stack framework" },
+      { name: "Next.js", icon: "nextdotjs", hex: "#13293D", note: "Full-stack framework" },
       { name: "TypeScript", icon: "typescript", hex: "#3178C6", note: "Type-safe code" },
-      { name: "JavaScript", icon: "javascript", hex: "#F7DF1E", note: "Web fundamentals" },
+      { name: "JavaScript", icon: "javascript", hex: "#B58F00", note: "Web fundamentals" },
       { name: "Tailwind CSS", icon: "tailwindcss", hex: "#06B6D4", note: "Design systems" },
     ],
   },
@@ -28,7 +28,7 @@ export const technologyGroups: TechnologyGroup[] = [
     index: "02",
     items: [
       { name: "Node.js", icon: "nodedotjs", hex: "#5FA04E", note: "Server runtime" },
-      { name: "Express", icon: "express", hex: "#FFFFFF", note: "API layer" },
+      { name: "Express", icon: "express", hex: "#13293D", note: "API layer" },
       { name: "Python", icon: "python", hex: "#3776AB", note: "Automation & AI" },
       { name: "FastAPI", icon: "fastapi", hex: "#009688", note: "Python APIs" },
       { name: "PHP", icon: "php", hex: "#777BB4", note: "Legacy & CMS" },

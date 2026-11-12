@@ -52,10 +52,10 @@ const enquirySchema = z.object({
 type EnquiryValues = z.infer<typeof enquirySchema>;
 
 const inputClass =
-  "w-full rounded-xl border border-ink/12 bg-paper/50 px-4 py-3 text-[14px] text-ink placeholder:text-ink/30 transition-all duration-200 focus:border-brand-blue/60 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/10";
+  "w-full rounded-xl border border-line bg-paper/60 px-4 py-3 text-[14px] text-ink placeholder:text-ink/65 transition-all duration-200 focus:border-sky/60 focus:bg-white focus:outline-none focus:ring-4 focus:ring-sky/10";
 
 const labelClass =
-  "mb-2 block font-mono text-[9.5px] uppercase tracking-[0.16em] text-ink/45";
+  "mb-2 block text-[9.5px] font-semibold uppercase tracking-[0.12em] text-ink/65";
 
 function Field({
   label,
@@ -83,7 +83,7 @@ function Field({
           {error}
         </p>
       ) : hint ? (
-        <p className="mt-1.5 text-[10.5px] text-ink/35">{hint}</p>
+        <p className="mt-1.5 text-[10.5px] text-ink/65">{hint}</p>
       ) : null}
     </div>
   );
@@ -166,7 +166,7 @@ export function EnquiryForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? undefined : { opacity: 0, y: -12 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="flex min-h-[560px] flex-col items-center justify-center rounded-3xl border border-ink/10 bg-white p-8 text-center sm:p-12"
+            className="flex min-h-[560px] flex-col items-center justify-center rounded-2xl border border-line bg-white p-8 text-center sm:p-12"
             role="status"
             aria-live="polite"
           >
@@ -174,33 +174,33 @@ export function EnquiryForm() {
               initial={reduced ? false : { scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, type: "spring", stiffness: 220, damping: 16 }}
-              className="flex h-16 w-16 items-center justify-center rounded-full bg-[linear-gradient(135deg,#00c8f5,#286bff,#852eff)] text-white shadow-[0_18px_50px_-18px_rgba(40,107,255,0.7)]"
+              className="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-sky-bright"
             >
               <Check className="h-7 w-7" strokeWidth={2.5} />
             </motion.span>
-            <p className="mt-7 font-mono text-[9px] uppercase tracking-[0.22em] text-ink/35">
+            <p className="mt-7 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-ink/65">
               Enquiry received
             </p>
-            <h3 className="mt-4 max-w-md text-[clamp(1.5rem,3vw,2rem)] font-semibold leading-tight text-ink">
-              Thank you for reaching out to KiyoraX Technologies!
+            <h3 className="mt-4 max-w-md text-[clamp(1.5rem,3vw,2rem)] font-bold leading-tight text-ink">
+              Thank you for reaching out to KiyoraX Technologies.
             </h3>
-            <p className="mt-4 max-w-md text-[14px] leading-relaxed text-ink/55">
+            <p className="mt-4 max-w-md text-[14px] leading-relaxed text-muted">
               Your enquiry has been received. Our team will connect with you soon.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button
-                variant="outlineDark"
+                variant="outline"
                 size="md"
                 onClick={() => setSubmitted(false)}
                 type="button"
               >
                 Send another enquiry
               </Button>
-              <Button href="/portfolio" variant="solid" size="md">
+              <Button href="/portfolio" variant="primary" size="md">
                 Explore our work
               </Button>
             </div>
-            <p className="mt-7 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/30">
+            <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/65">
               Prefer email? {site.email}
             </p>
           </motion.div>
@@ -213,19 +213,19 @@ export function EnquiryForm() {
             transition={{ duration: 0.3 }}
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="rounded-3xl border border-ink/10 bg-white p-6 sm:p-8 lg:p-9"
+            className="rounded-2xl border border-line bg-white p-6 sm:p-8"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-[22px] font-semibold tracking-tight text-ink">
+                <h2 className="text-[22px] font-bold tracking-tight text-ink">
                   Project enquiry
                 </h2>
-                <p className="mt-1.5 text-[12.5px] text-ink/45">
-                  Tell us what you are building. All required fields are marked{" "}
+                <p className="mt-1.5 text-[12.5px] text-muted">
+                  Tell us what you are building. Required fields are marked{" "}
                   <span className="text-ink/70">*</span>.
                 </p>
               </div>
-              <span className="hidden rounded-full border border-ink/10 px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.16em] text-ink/35 sm:block">
+              <span className="hidden rounded-full border border-line px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-ink/65 sm:block">
                 Step 1 of 1
               </span>
             </div>
@@ -323,7 +323,7 @@ export function EnquiryForm() {
                     ))}
                   </select>
                   <ChevronDown
-                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35"
+                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/65"
                     aria-hidden="true"
                   />
                 </div>
@@ -364,7 +364,7 @@ export function EnquiryForm() {
                     ))}
                   </select>
                   <ChevronDown
-                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35"
+                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/65"
                     aria-hidden="true"
                   />
                 </div>
@@ -381,7 +381,7 @@ export function EnquiryForm() {
                     ))}
                   </select>
                   <ChevronDown
-                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35"
+                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/65"
                     aria-hidden="true"
                   />
                 </div>
@@ -398,7 +398,7 @@ export function EnquiryForm() {
                         className="peer sr-only"
                         {...register("preferredContact")}
                       />
-                      <span className="inline-flex rounded-full border border-ink/12 bg-paper/50 px-4 py-2 text-[12px] text-ink/55 transition-all peer-checked:border-ink peer-checked:bg-ink peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-brand-blue/15">
+                      <span className="inline-flex rounded-full border border-line bg-paper/60 px-4 py-2 text-[12px] text-ink/65 transition-all peer-checked:border-ink peer-checked:bg-ink peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-sky/15">
                         {option}
                       </span>
                     </label>
@@ -418,14 +418,13 @@ export function EnquiryForm() {
               />
             </div>
 
-            <div className="mt-8 flex flex-col gap-4 border-t border-ink/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-sm text-[10.5px] leading-relaxed text-ink/35">
+            <div className="mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="max-w-sm text-[10.5px] leading-relaxed text-ink/65">
                 By submitting this form you agree to be contacted about your enquiry. We do
                 not share your details with third parties.
               </p>
               <Button
                 type="submit"
-                variant="brand"
                 size="lg"
                 disabled={isSubmitting}
                 className="w-full shrink-0 sm:w-auto"

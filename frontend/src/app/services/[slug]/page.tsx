@@ -4,10 +4,15 @@ import { ArrowUpRight, Check } from "lucide-react";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/page-header";
 import { FinalCta } from "@/components/sections/final-cta";
+import { ProjectCard } from "@/components/portfolio/project-card";
+import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { ServiceIcon } from "@/components/ui/service-icon";
 import { getService, services } from "@/data/services";
+import { faqs } from "@/data/faqs";
+import { processSteps } from "@/data/content";
+import { projects, type Project } from "@/data/projects";
 import { createMetadata } from "@/lib/metadata";
 
 type ServicePageProps = {
@@ -29,28 +34,31 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   });
 }
 
-const delivery = [
-  {
-    step: "01",
-    title: "Discover",
-    text: "Understand the business goal, users, constraints, and what success looks like before proposing a solution.",
-  },
-  {
-    step: "02",
-    title: "Design",
-    text: "Shape the information architecture and interface around real tasks, with review points you can respond to.",
-  },
-  {
-    step: "03",
-    title: "Build",
-    text: "Engineer in reviewable milestones with clean code, staging previews, and clear communication.",
-  },
-  {
-    step: "04",
-    title: "Launch & support",
-    text: "Test across devices, deploy carefully, document the handover, and support the product after release.",
-  },
-];
+const relatedCategory: Record<string, Project["category"] | undefined> = {
+  "website-development": "Websites",
+  "ecommerce-development": "E-commerce",
+  "crm-development": "CRM",
+  "web-application-development": "Web Applications",
+  "mobile-application-development": "Web Applications",
+  "saas-development": "Web Applications",
+  "ai-integration-automation": "Web Applications",
+  "digital-marketing": "Websites",
+  "wordpress-cms-development": "Websites",
+  "educational-institutional-platforms": "Education",
+};
+
+const faqPicks: Record<string, number[]> = {
+  "website-development": [0, 3, 6],
+  "ecommerce-development": [2, 3, 4],
+  "crm-development": [1, 3, 6],
+  "web-application-development": [0, 3, 5],
+  "mobile-application-development": [0, 3, 4],
+  "saas-development": [0, 3, 5],
+  "ai-integration-automation": [7, 3, 6],
+  "digital-marketing": [0, 6, 4],
+  "wordpress-cms-development": [3, 4, 6],
+  "educational-institutional-platforms": [0, 3, 6],
+};
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
@@ -59,6 +67,13 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   if (!service) notFound();
 
   const related = services.filter((item) => item.slug !== service.slug).slice(0, 3);
+  const category = relatedCategory[service.slug];
+  const relatedProjects = (
+    category ? projects.filter((project) => project.category === category) : projects
+  ).slice(0, 2);
+  const serviceFaqs = (faqPicks[service.slug] ?? [0, 3, 6])
+    .map((index) => faqs[index])
+    .filter(Boolean);
 
   return (
     <>
@@ -69,7 +84,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         description={service.short}
         actions={
           <>
-            <Button href="/contact" variant="brand">
+            <Button href="/contact">
               Discuss this service
               <ArrowUpRight className="h-4 w-4" />
             </Button>
@@ -86,33 +101,32 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         ]}
       />
 
-      <section className="relative overflow-hidden bg-paper text-ink">
-        <div aria-hidden="true" className="absolute inset-0 bg-grid-dark opacity-50" />
+      <section className="relative overflow-hidden bg-white">
         <div className="container-x section-pad relative">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <Reveal>
-                <p className="eyebrow text-ink/40">Overview</p>
-                <h2 className="mt-5 max-w-2xl text-[clamp(1.9rem,3.4vw,2.8rem)] font-semibold leading-[1.07]">
+                <p className="eyebrow">Overview</p>
+                <h2 className="mt-5 max-w-2xl text-[clamp(1.85rem,3.2vw,2.6rem)] font-bold leading-[1.08] text-ink">
                   What this service{" "}
-                  <span className="text-gradient-brand">delivers.</span>
+                  <span className="text-sky">delivers.</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.08}>
-                <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink/60">
+                <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted">
                   {service.overview}
                 </p>
               </Reveal>
 
               <Reveal delay={0.14}>
-                <div className="mt-10">
-                  <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/35">
+                <div className="mt-9">
+                  <h3 className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/65">
                     What&apos;s included
                   </h3>
-                  <ul className="mt-5 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+                  <ul className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-[13.5px] text-ink/65">
-                        <span className="mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-ink text-white">
+                      <li key={feature} className="flex items-start gap-3 text-[13.5px] text-ink/70">
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-ink text-white">
                           <Check className="h-2.5 w-2.5" strokeWidth={3} />
                         </span>
                         {feature}
@@ -123,20 +137,23 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </Reveal>
 
               <Reveal delay={0.18}>
-                <div className="mt-10 rounded-2xl border border-ink/10 bg-white p-6">
+                <div className="mt-9 rounded-2xl border border-line bg-paper p-5 sm:p-6">
                   <div className="flex items-start gap-4">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-white">
                       <ServiceIcon name={service.icon} className="h-4.5 w-4.5" />
                     </span>
                     <div>
-                      <p className="text-[14px] font-medium text-ink">Not sure this is the right fit?</p>
-                      <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink/50">
-                        Requirements rarely arrive neatly labelled. Tell us the problem and we
-                        will recommend the most sensible path — even if it is a different service.
+                      <p className="text-[14px] font-semibold text-ink">
+                        Not sure this is the right fit?
+                      </p>
+                      <p className="mt-1.5 text-[12.5px] leading-relaxed text-muted">
+                        Requirements rarely arrive neatly labelled. Tell us the problem and
+                        we will recommend the most sensible path — even if it is a different
+                        service.
                       </p>
                       <Link
                         href="/contact"
-                        className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-ink"
+                        className="group mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-ink"
                       >
                         <span className="link-underline">Start a conversation</span>
                         <ArrowUpRight className="h-3.5 w-3.5" />
@@ -150,16 +167,16 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <div className="lg:col-span-5">
               <Reveal delay={0.1}>
                 <div className="lg:sticky lg:top-28">
-                  <div className="overflow-hidden rounded-2xl border border-ink/10 bg-white">
-                    <div className="border-b border-ink/10 p-6">
-                      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-ink/35">
+                  <div className="overflow-hidden rounded-2xl border border-line bg-white">
+                    <div className="border-b border-line p-6">
+                      <p className="text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ink/65">
                         Ideal for
                       </p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {service.idealFor.map((item) => (
                           <span
                             key={item}
-                            className="rounded-full border border-ink/10 bg-paper px-3 py-1.5 text-[11px] text-ink/60"
+                            className="rounded-full border border-line bg-paper px-3 py-1.5 text-[11px] text-ink/65"
                           >
                             {item}
                           </span>
@@ -167,25 +184,44 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       </div>
                     </div>
                     <div className="p-6">
-                      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-ink/35">
+                      <p className="text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ink/65">
                         What you can expect
                       </p>
                       <ul className="mt-4 space-y-3">
                         {service.outcomes.map((outcome) => (
-                          <li key={outcome} className="flex items-start gap-2.5 text-[13px] text-ink/60">
-                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-blue" />
+                          <li key={outcome} className="flex items-start gap-2.5 text-[13px] text-ink/65">
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sky" />
                             {outcome}
                           </li>
                         ))}
                       </ul>
-                      <Button href="/contact" variant="brand" size="md" className="mt-6 w-full">
+                      <Button href="/contact" size="md" className="mt-6 w-full">
                         Request a quotation
                         <ArrowUpRight className="h-4 w-4" />
                       </Button>
-                      <p className="mt-3 text-center font-mono text-[8.5px] uppercase tracking-[0.16em] text-ink/30">
+                      <p className="mt-3 text-center text-[9px] font-semibold uppercase tracking-[0.12em] text-ink/65">
                         Response within one business day
                       </p>
                     </div>
+                  </div>
+
+                  <div className="mt-4 rounded-2xl border border-line bg-paper p-5">
+                    <p className="text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ink/65">
+                      Related capabilities
+                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {related.map((item) => (
+                        <li key={item.slug}>
+                          <Link
+                            href={`/services/${item.slug}`}
+                            className="group flex items-center justify-between gap-3 text-[12px] text-ink/65 transition-colors hover:text-ink"
+                          >
+                            {item.title}
+                            <ArrowUpRight className="h-3.5 w-3.5 text-ink/65 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </Reveal>
@@ -194,31 +230,34 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#070810]">
+      <section className="relative overflow-hidden bg-paper">
         <div className="container-x section-pad relative">
           <Reveal>
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div className="max-w-xl">
-                <p className="eyebrow text-white/40">Delivery</p>
-                <h2 className="mt-5 text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.05] text-white">
-                  How this work <span className="text-gradient">gets delivered.</span>
+                <p className="eyebrow">Delivery</p>
+                <h2 className="mt-5 text-[clamp(1.85rem,3.4vw,2.7rem)] font-bold leading-[1.08] text-ink">
+                  How this work{" "}
+                  <span className="text-sky">gets delivered.</span>
                 </h2>
               </div>
-              <p className="max-w-xs text-[12.5px] leading-relaxed text-white/35">
+              <p className="max-w-xs text-[12.5px] leading-relaxed text-muted">
                 The exact plan is scoped after discovery, but the principles stay the same.
               </p>
             </div>
           </Reveal>
 
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
-            {delivery.map((item, index) => (
-              <Reveal key={item.step} delay={index * 0.05} y={14} className="bg-[#070810]">
-                <div className="h-full p-6">
-                  <span className="font-mono text-[10px] tracking-[0.2em] text-brand-cyan/60">
-                    {item.step}
+          <div className="mt-10 grid gap-x-8 gap-y-0 sm:grid-cols-2 lg:grid-cols-3">
+            {processSteps.map((item, index) => (
+              <Reveal key={item.number} delay={Math.min(index * 0.04, 0.2)} y={14}>
+                <div className="border-t-2 border-ink/10 py-5">
+                  <span className="text-[10px] font-semibold tracking-[0.14em] text-sky">
+                    {item.number}
                   </span>
-                  <h3 className="mt-4 text-[16px] font-medium text-white">{item.title}</h3>
-                  <p className="mt-2 text-[12.5px] leading-relaxed text-white/40">{item.text}</p>
+                  <h3 className="mt-3 text-[16px] font-semibold text-ink">{item.title}</h3>
+                  <p className="mt-1.5 text-[12.5px] leading-relaxed text-muted">
+                    {item.description}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -226,40 +265,64 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="relative bg-paper text-ink">
-        <div className="container-x section-pad relative">
-          <Reveal>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-              <h2 className="text-[clamp(1.75rem,3vw,2.4rem)] font-semibold">
-                Related capabilities
-              </h2>
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-1.5 text-[12px] font-medium text-ink/55 hover:text-ink"
-              >
-                View all services <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {related.map((item, index) => (
-              <Reveal key={item.slug} delay={index * 0.05} y={14}>
+      {relatedProjects.length > 0 ? (
+        <section className="relative overflow-hidden bg-white">
+          <div className="container-x section-pad relative">
+            <Reveal>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="eyebrow">Related work</p>
+                  <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.4rem)] font-bold text-ink">
+                    Concept work in this space.
+                  </h2>
+                </div>
                 <Link
-                  href={`/services/${item.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-ink/10 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/20 hover:shadow-[0_20px_50px_-34px_rgba(5,6,10,0.4)]"
+                  href="/portfolio"
+                  className="inline-flex items-center gap-1.5 text-[12px] font-medium text-ink/65 hover:text-ink"
                 >
-                  <div className="flex items-start justify-between">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-ink/10 text-ink/45 transition-colors group-hover:text-brand-blue">
-                      <ServiceIcon name={item.icon} className="h-4.5 w-4.5" />
-                    </span>
-                    <ArrowUpRight className="h-4 w-4 text-ink/25 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink/60" />
-                  </div>
-                  <h3 className="mt-6 text-[16px] font-medium text-ink">{item.title}</h3>
-                  <p className="mt-2 text-[12.5px] leading-relaxed text-ink/50">{item.short}</p>
+                  View all projects <ArrowUpRight className="h-3.5 w-3.5" />
                 </Link>
+              </div>
+            </Reveal>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {relatedProjects.map((project, index) => (
+                <Reveal key={project.slug} delay={index * 0.05} y={14}>
+                  <ProjectCard project={project} />
+                </Reveal>
+              ))}
+            </div>
+            <p className="mt-5 text-[10.5px] text-ink/65">
+              These are demo concepts, not delivered client engagements.
+            </p>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="relative overflow-hidden bg-paper">
+        <div className="container-x section-pad relative">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <p className="eyebrow">FAQs</p>
+                <h2 className="mt-5 text-[clamp(1.85rem,3.2vw,2.6rem)] font-bold leading-[1.08] text-ink">
+                  Questions about{" "}
+                  <span className="text-sky">this kind of work.</span>
+                </h2>
+                <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-muted">
+                  Still unsure? Ask directly — we would rather give you a straight answer
+                  than a sales pitch.
+                </p>
+                <Button href="/contact" variant="outline" size="sm" className="mt-6">
+                  Ask a question
+                  <ArrowUpRight className="h-4 w-4" />
+                </Button>
               </Reveal>
-            ))}
+            </div>
+            <div className="lg:col-span-7">
+              <Reveal delay={0.06}>
+                <Accordion items={serviceFaqs} />
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>

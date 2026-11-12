@@ -5,7 +5,7 @@ type SectionHeadingProps = {
   eyebrow: string;
   title: ReactNode;
   description?: ReactNode;
-  tone?: "dark" | "light";
+  tone?: "light" | "dark";
   align?: "left" | "center";
   className?: string;
   action?: ReactNode;
@@ -15,12 +15,12 @@ export function SectionHeading({
   eyebrow,
   title,
   description,
-  tone = "dark",
+  tone = "light",
   align = "left",
   className,
   action,
 }: SectionHeadingProps) {
-  const light = tone === "light";
+  const dark = tone === "dark";
   return (
     <div
       className={cn(
@@ -29,20 +29,14 @@ export function SectionHeading({
         className,
       )}
     >
-      <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
-        <p
-          className={cn(
-            "eyebrow",
-            light ? "text-ink/45" : "text-white/45",
-            align === "center" && "justify-center before:hidden",
-          )}
-        >
+      <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
+        <p className={cn("eyebrow", dark ? "text-sky-bright" : "text-sky", align === "center" && "eyebrow-center justify-center")}>
           {eyebrow}
         </p>
         <h2
           className={cn(
-            "mt-5 text-[clamp(2rem,4vw,3.25rem)] leading-[1.04] font-semibold",
-            light ? "text-ink" : "text-white",
+            "mt-5 text-[clamp(1.95rem,3.6vw,3rem)] font-bold leading-[1.08]",
+            dark ? "text-white" : "text-ink",
           )}
         >
           {title}
@@ -50,8 +44,8 @@ export function SectionHeading({
         {description ? (
           <p
             className={cn(
-              "mt-5 max-w-2xl text-[15px] leading-relaxed sm:text-base",
-              light ? "text-ink/60" : "text-muted",
+              "mt-5 max-w-xl text-[15px] leading-relaxed sm:text-base",
+              dark ? "text-white/60" : "text-muted",
               align === "center" && "mx-auto",
             )}
           >

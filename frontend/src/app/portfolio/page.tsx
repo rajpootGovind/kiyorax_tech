@@ -40,14 +40,14 @@ export default function PortfolioPage() {
         breadcrumb="Portfolio"
         title={
           <>
-            Real solutions.{" "}
-            <span className="text-gradient">Meaningful impact.</span>
+            Real thinking.{" "}
+            <span className="text-sky">Meaningful products.</span>
           </>
         }
         description="A selection of demo concepts that illustrate how we approach products across CRM, education, commerce, websites, and internal platforms."
         actions={
           <>
-            <Button href="/contact" variant="brand">
+            <Button href="/contact">
               Start your project
               <ArrowUpRight className="h-4 w-4" />
             </Button>
@@ -64,18 +64,17 @@ export default function PortfolioPage() {
         ]}
       />
 
-      <section className="relative overflow-hidden bg-[#070810]">
-        <div aria-hidden="true" className="absolute inset-0 bg-grid opacity-30" />
+      <section className="relative overflow-hidden bg-white">
         <div className="container-x section-pad relative">
           <Reveal>
-            <div className="mb-8 flex items-start gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5">
-              <Info className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan/70" aria-hidden="true" />
-              <p className="max-w-3xl text-[12px] leading-relaxed text-white/40">
-                <span className="text-white/70">A note on transparency.</span> Every project
-                listed on this page is a clearly labelled demo concept created to illustrate
-                our capabilities and design approach. They are not client engagements. Verified
-                case studies with client-approved details and outcomes will replace these as they
-                are cleared for publication.
+            <div className="mb-8 flex items-start gap-3 rounded-xl border border-line bg-paper p-5">
+              <Info className="mt-0.5 h-4 w-4 shrink-0 text-sky" aria-hidden="true" />
+              <p className="max-w-3xl text-[12px] leading-relaxed text-muted">
+                <span className="font-semibold text-ink">A note on transparency.</span> Every
+                project listed on this page is a clearly labelled demo concept created to
+                illustrate our capabilities and design approach. They are not client
+                engagements. Verified case studies with client-approved details and outcomes
+                will replace these as they are cleared for publication.
               </p>
             </div>
           </Reveal>
@@ -83,33 +82,33 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-paper text-ink">
+      <section className="relative overflow-hidden bg-paper">
         <div className="container-x section-pad relative">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <Reveal>
-                <p className="eyebrow text-ink/40">Our lens</p>
-                <h2 className="mt-5 text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.05]">
+                <p className="eyebrow">Our lens</p>
+                <h2 className="mt-5 text-[clamp(1.95rem,3.6vw,2.9rem)] font-bold leading-[1.08] text-ink">
                   Every project starts with the same{" "}
-                  <span className="text-gradient-brand">three questions.</span>
+                  <span className="text-sky">three questions.</span>
                 </h2>
-                <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-ink/55">
+                <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
                   They keep the work honest — and make sure the final product is useful, not
                   merely impressive.
                 </p>
               </Reveal>
             </div>
             <div className="lg:col-span-7">
-              <div className="divide-y divide-ink/10 border-y border-ink/10">
+              <div className="border-t border-line">
                 {questions.map((question, index) => (
                   <Reveal key={question.index} delay={index * 0.05}>
-                    <div className="grid grid-cols-[auto_1fr] gap-6 py-6">
-                      <span className="font-mono text-[10px] tracking-[0.2em] text-ink/25">
+                    <div className="grid grid-cols-[auto_1fr] gap-6 border-b border-line py-6">
+                      <span className="mt-1 text-[10px] font-semibold tracking-[0.14em] text-ink/65">
                         {question.index}
                       </span>
                       <div>
-                        <h3 className="text-[17px] font-medium text-ink">{question.title}</h3>
-                        <p className="mt-2 text-[13px] leading-relaxed text-ink/50">
+                        <h3 className="text-[17px] font-semibold text-ink">{question.title}</h3>
+                        <p className="mt-2 text-[13px] leading-relaxed text-muted">
                           {question.body}
                         </p>
                       </div>

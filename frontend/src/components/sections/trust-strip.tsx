@@ -1,43 +1,52 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ServiceIcon } from "@/components/ui/service-icon";
 import { trustHighlights } from "@/data/content";
-import Link from "next/link";
 
 export function TrustStrip() {
   return (
-    <section id="trust" className="relative border-y border-white/[0.07] bg-[#06070c]">
+    <section id="trust" className="relative border-b border-line bg-paper">
       <div className="container-x">
-        <div className="flex items-center justify-between gap-4 py-6">
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/35">
-            What we build
+        <div className="flex items-center justify-between gap-4 border-b border-line py-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65">
+            What you can expect from us
           </p>
           <Link
-            href="/services"
-            className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-white/35 transition-colors hover:text-white/70 sm:inline-flex"
+            href="/about"
+            className="group inline-flex items-center gap-1.5 text-[12px] font-medium text-ink/65 transition-colors hover:text-ink"
           >
-            Explore capabilities
+            <span className="link-underline">How we work</span>
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
-      </div>
-      <div className="grid grid-cols-2 gap-px border-t border-white/[0.07] bg-white/[0.06] md:grid-cols-3 lg:grid-cols-5">
-        {trustHighlights.map((item, index) => (
-          <Reveal key={item.title} delay={index * 0.05} y={14} className="bg-[#06070c]">
-            <div className="group h-full p-6 transition-colors duration-300 hover:bg-white/[0.025] lg:p-7">
-              <div className="flex items-center justify-between">
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-brand-cyan/80 transition-colors group-hover:border-brand-cyan/30 group-hover:text-brand-cyan">
-                  <ServiceIcon name={item.icon} className="h-4 w-4" />
-                </span>
-                <span className="font-mono text-[10px] tracking-widest text-white/20">
-                  0{index + 1}
-                </span>
+        <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
+          {trustHighlights.map((item, index) => (
+            <Reveal
+              key={item.title}
+              delay={index * 0.05}
+              y={12}
+              className="bg-paper"
+            >
+              <div className="group h-full px-2 py-7 sm:px-6 lg:px-5 lg:py-8">
+                <div className="flex items-center justify-between">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-white text-sky transition-colors group-hover:border-sky/35">
+                    <ServiceIcon name={item.icon} className="h-4 w-4" />
+                  </span>
+                  <span className="text-[10px] font-semibold tracking-[0.14em] text-ink/20">
+                    0{index + 1}
+                  </span>
+                </div>
+                <p className="mt-6 text-[13.5px] font-semibold text-ink">
+                  {item.title}
+                </p>
+                <p className="mt-1.5 text-[12px] leading-relaxed text-muted">
+                  {item.description}
+                </p>
               </div>
-              <p className="mt-6 text-[13px] font-medium text-white/85">{item.title}</p>
-              <p className="mt-2 text-[12px] leading-relaxed text-white/35">
-                {item.description}
-              </p>
-            </div>
-          </Reveal>
-        ))}
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

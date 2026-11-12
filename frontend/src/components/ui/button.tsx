@@ -8,16 +8,16 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        brand:
-          "bg-[linear-gradient(100deg,#00c8f5,#286bff_52%,#852eff)] text-white shadow-[0_12px_44px_-16px_rgba(40,107,255,0.85)] hover:shadow-[0_18px_50px_-14px_rgba(40,107,255,0.9)] hover:brightness-110",
-        solid:
-          "bg-white text-ink hover:bg-paper shadow-[0_10px_36px_-18px_rgba(255,255,255,0.6)]",
+        primary:
+          "bg-ink text-white shadow-[0_12px_30px_-18px_rgba(10,30,46,0.8)] hover:bg-ink-deep",
+        sky:
+          "bg-sky text-white shadow-[0_12px_30px_-18px_rgba(15,116,201,0.8)] hover:bg-[#0c65b0]",
         outline:
-          "border border-white/15 text-white hover:border-white/35 hover:bg-white/[0.06]",
-        outlineDark:
-          "border border-ink/15 text-ink hover:border-ink/35 hover:bg-ink/[0.04]",
-        ghost: "text-white/75 hover:text-white",
-        ghostDark: "text-ink/70 hover:text-ink",
+          "border border-line bg-white text-ink hover:border-ink/30 hover:bg-paper",
+        ghost: "text-ink/65 hover:text-ink",
+        onDark:
+          "border border-white/20 text-white hover:border-white/40 hover:bg-white/5",
+        light: "bg-white text-ink hover:bg-paper",
       },
       size: {
         sm: "h-10 px-5 text-[13px]",
@@ -27,7 +27,7 @@ export const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "brand",
+      variant: "primary",
       size: "md",
     },
   },

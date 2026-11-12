@@ -3,11 +3,13 @@ import {
   Code2,
   Cpu,
   Globe,
+  GraduationCap,
   Handshake,
   LayoutDashboard,
   Layers,
   Megaphone,
   MessageSquare,
+  PenTool,
   Puzzle,
   ShieldCheck,
   ShoppingBag,
@@ -28,6 +30,7 @@ const iconMap: Record<string, LucideIcon> = {
   smartphone: Smartphone,
   megaphone: Megaphone,
   blocks: Blocks,
+  "graduation-cap": GraduationCap,
   code: Code2,
   workflow: Workflow,
   layers: Layers,
@@ -35,6 +38,7 @@ const iconMap: Record<string, LucideIcon> = {
   puzzle: Puzzle,
   cpu: Cpu,
   "shield-check": ShieldCheck,
+  "pen-tool": PenTool,
   messages: MessageSquare,
   handshake: Handshake,
 };
@@ -47,5 +51,5 @@ export function ServiceIcon({
   className?: string;
 }) {
   const Icon = iconMap[name] ?? Sparkles;
-  return <Icon className={className} strokeWidth={1.5} aria-hidden="true" />;
+  return <Icon className={className} strokeWidth={1.6} aria-hidden="true" />;
 }

@@ -9,6 +9,7 @@ export const services = [
   "Institutional Website",
   "Web Application Development",
   "Mobile Application Development",
+  "SaaS Development",
   "AI Integration",
   "Digital Marketing",
   "WordPress Development",

@@ -7,6 +7,7 @@ import { PortfolioPreview } from "@/components/sections/portfolio-preview";
 import { WhyUs } from "@/components/sections/why-us";
 import { Process } from "@/components/sections/process";
 import { Testimonials } from "@/components/sections/testimonials";
+import { FounderSection } from "@/components/sections/founder";
 import { TeamSection } from "@/components/sections/team-section";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -37,6 +38,7 @@ export default function HomePage() {
       <WhyUs />
       <Process />
       <Testimonials />
+      <FounderSection />
       <TeamSection />
       <Faq />
       <FinalCta />

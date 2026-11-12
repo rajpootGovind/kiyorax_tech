@@ -47,7 +47,7 @@ export function LegalPage({
             <aside className="lg:col-span-4">
               <div className="lg:sticky lg:top-28">
                 <Reveal>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-ink/35">
+                  <p className="text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ink/65">
                     On this page
                   </p>
                   <nav aria-label="Document sections" className="mt-4">
@@ -56,9 +56,9 @@ export function LegalPage({
                         <li key={section.id}>
                           <a
                             href={`#${section.id}`}
-                            className="group flex items-baseline gap-3 text-[12.5px] text-ink/45 transition-colors hover:text-ink"
+                            className="group flex items-baseline gap-3 text-[12.5px] text-ink/65 transition-colors hover:text-ink"
                           >
-                            <span className="font-mono text-[9px] text-ink/25">
+                            <span className="text-[9.5px] font-semibold text-ink/65">
                               {String(index + 1).padStart(2, "0")}
                             </span>
                             {section.title}
@@ -72,7 +72,7 @@ export function LegalPage({
                 <Reveal delay={0.08}>
                   <div className="mt-8 rounded-2xl border border-ink/10 bg-white p-5">
                     <p className="text-[12.5px] font-medium text-ink">Questions about this policy?</p>
-                    <p className="mt-1.5 text-[11.5px] leading-relaxed text-ink/45">
+                    <p className="mt-1.5 text-[11.5px] leading-relaxed text-ink/65">
                       Write to us and we will clarify anything that is unclear.
                     </p>
                     <Link
@@ -93,14 +93,14 @@ export function LegalPage({
                   <Reveal key={section.id} delay={Math.min(index * 0.03, 0.15)} y={12}>
                     <section id={section.id} className="scroll-mt-28">
                       <div className="flex items-baseline gap-3">
-                        <span className="font-mono text-[9px] tracking-[0.18em] text-ink/25">
+                        <span className="text-[9.5px] font-semibold tracking-[0.14em] text-ink/65">
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         <h2 className="text-[20px] font-semibold tracking-tight text-ink sm:text-[23px]">
                           {section.title}
                         </h2>
                       </div>
-                      <div className="mt-4 space-y-3.5 pl-0 text-[13.5px] leading-relaxed text-ink/60 sm:pl-8">
+                      <div className="mt-4 space-y-3.5 pl-0 text-[13.5px] leading-relaxed text-ink/65 sm:pl-8">
                         {section.body}
                       </div>
                     </section>

@@ -8,26 +8,26 @@ import { cn } from "@/lib/utils";
 const tabs = [
   {
     key: "vision",
-    label: "Our Vision",
+    label: "Our vision",
     icon: Compass,
-    title: "A partner for the next version of your business.",
-    body: "To be the technology partner ambitious businesses turn to when an idea needs to become a dependable digital product — one that creates real, measurable value and keeps earning its place as the business grows.",
+    title: "To be the partner businesses trust with the next version of themselves.",
+    body: "We want KiyoraX to be the team ambitious businesses call when an idea needs to become a dependable digital product — one that creates real value and keeps earning its place as the business grows.",
     points: ["Long-term thinking", "Meaningful products", "Measurable value"],
   },
   {
     key: "mission",
-    label: "Our Mission",
+    label: "Our mission",
     icon: Flag,
-    title: "Build digital products that do real work.",
-    body: "To combine modern engineering, thoughtful design, and business understanding to build websites, applications, and platforms that help our clients operate smarter, connect better, and grow with confidence.",
+    title: "Build digital products that do real work, for real people.",
+    body: "We combine modern engineering, thoughtful design, and business understanding to build websites, applications, and platforms that help our clients operate smarter, connect better, and grow with confidence.",
     points: ["Modern engineering", "Thoughtful design", "Business understanding"],
   },
   {
     key: "approach",
-    label: "Our Approach",
+    label: "Our approach",
     icon: Route,
     title: "Clarity first. Then code.",
-    body: "We start with the business problem, not the technology. We keep scope honest, communicate clearly, and build in reviewable milestones so every decision is understood by both sides — long before launch day.",
+    body: "We start with the business problem, not the technology. Scope stays honest, communication stays clear, and work moves in reviewable milestones — so both sides understand every decision long before launch.",
     points: ["Honest scope", "Clear communication", "Reviewable milestones"],
   },
 ] as const;
@@ -40,116 +40,101 @@ export function AboutPanel() {
 
   return (
     <div className="relative">
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-8 -bottom-4 h-24 rounded-[2rem] bg-ink/10 blur-xl"
-      />
-      <div className="relative overflow-hidden rounded-[2rem] bg-ink p-2">
-        <div className="relative overflow-hidden rounded-[1.6rem] border border-white/[0.07] bg-ink-soft">
-          <div aria-hidden="true" className="absolute inset-0 bg-grid opacity-50" />
-          <div
-            aria-hidden="true"
-            className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-blue/20 blur-[100px]"
-          />
+      <div className="absolute -right-2 -top-2 hidden h-20 w-20 rounded-full border border-sky/25 sm:block" />
+      <div className="relative overflow-hidden rounded-2xl border border-line bg-white">
+        <div className="flex flex-wrap items-center gap-1 border-b border-line bg-paper/70 p-2">
+          {tabs.map((item, index) => (
+            <button
+              key={item.key}
+              type="button"
+              role="tab"
+              id={`about-tab-${item.key}`}
+              aria-selected={active === index}
+              aria-controls={`about-panel-${item.key}`}
+              tabIndex={active === index ? 0 : -1}
+              onClick={() => setActive(index)}
+              onKeyDown={(event) => {
+                if (event.key === "ArrowRight") {
+                  setActive((active + 1) % tabs.length);
+                }
+                if (event.key === "ArrowLeft") {
+                  setActive((active - 1 + tabs.length) % tabs.length);
+                }
+              }}
+              className={cn(
+                "relative rounded-full px-4 py-2 text-[12px] font-medium transition-colors",
+                active === index ? "text-ink" : "text-ink/65 hover:text-ink/75",
+              )}
+            >
+              {active === index ? (
+                <motion.span
+                  layoutId="about-tab"
+                  className="absolute inset-0 rounded-full border border-line bg-white shadow-[0_4px_14px_-8px_rgba(19,41,61,0.25)]"
+                  transition={{ type: "spring", stiffness: 350, damping: 32 }}
+                />
+              ) : null}
+              <span className="relative">{item.label}</span>
+            </button>
+          ))}
+        </div>
 
-          <div
-            role="tablist"
-            aria-label="About KiyoraX"
-            className="relative flex flex-wrap gap-1 border-b border-white/[0.07] p-3"
+        <div className="relative min-h-[330px] p-6 sm:min-h-[310px] sm:p-8">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute right-5 top-2 font-display text-[96px] font-bold leading-none text-ink/[0.035]"
           >
+            0{active + 1}
+          </span>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={tab.key}
+              id={`about-panel-${tab.key}`}
+              role="tabpanel"
+              aria-labelledby={`about-tab-${tab.key}`}
+              initial={reduced ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduced ? undefined : { opacity: 0, y: -6 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="relative max-w-md"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-soft text-sky">
+                <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden="true" />
+              </span>
+              <h3 className="mt-6 text-[21px] font-semibold leading-snug text-ink">
+                {tab.title}
+              </h3>
+              <p className="mt-3 text-[13.5px] leading-relaxed text-muted">{tab.body}</p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {tab.points.map((point) => (
+                  <li
+                    key={point}
+                    className="rounded-full border border-line bg-paper px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] text-ink/65"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="relative flex items-center justify-between border-t border-line px-6 py-3.5">
+          <span className="text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ink/65">
+            KiyoraX · Operating principles
+          </span>
+          <div className="flex gap-1.5">
             {tabs.map((item, index) => (
               <button
                 key={item.key}
                 type="button"
-                role="tab"
-                id={`about-tab-${item.key}`}
-                aria-selected={active === index}
-                aria-controls={`about-panel-${item.key}`}
-                tabIndex={active === index ? 0 : -1}
+                aria-label={`Show ${item.label}`}
                 onClick={() => setActive(index)}
-                onKeyDown={(event) => {
-                  if (event.key === "ArrowRight") {
-                    setActive((active + 1) % tabs.length);
-                  }
-                  if (event.key === "ArrowLeft") {
-                    setActive((active - 1 + tabs.length) % tabs.length);
-                  }
-                }}
                 className={cn(
-                  "relative rounded-full px-4 py-2.5 text-[12px] font-medium transition-colors",
-                  active === index ? "text-white" : "text-white/45 hover:text-white/75",
+                  "h-1.5 rounded-full transition-all duration-300",
+                  active === index ? "w-6 bg-sky" : "w-1.5 bg-ink/15 hover:bg-ink/30",
                 )}
-              >
-                {active === index ? (
-                  <motion.span
-                    layoutId="about-tab"
-                    className="absolute inset-0 rounded-full border border-white/10 bg-white/[0.07]"
-                    transition={{ type: "spring", stiffness: 350, damping: 32 }}
-                  />
-                ) : null}
-                <span className="relative">{item.label}</span>
-              </button>
+              />
             ))}
-          </div>
-
-          <div className="relative min-h-[330px] p-7 sm:min-h-[300px] sm:p-9">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute right-6 top-3 font-display text-[110px] font-semibold leading-none text-white/[0.035]"
-            >
-              0{active + 1}
-            </span>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={tab.key}
-                id={`about-panel-${tab.key}`}
-                role="tabpanel"
-                aria-labelledby={`about-tab-${tab.key}`}
-                initial={reduced ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduced ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                className="relative max-w-md"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-brand-cyan">
-                  <Icon className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
-                </span>
-                <h3 className="mt-6 text-[22px] font-medium leading-snug text-white">
-                  {tab.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-white/50">{tab.body}</p>
-                <ul className="mt-6 flex flex-wrap gap-2">
-                  {tab.points.map((point) => (
-                    <li
-                      key={point}
-                      className="rounded-full border border-white/10 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-white/40"
-                    >
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <div className="relative flex items-center justify-between border-t border-white/[0.07] px-7 py-4">
-            <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/25">
-              KiyoraX / Operating principles
-            </span>
-            <div className="flex gap-1.5">
-              {tabs.map((item, index) => (
-                <button
-                  key={item.key}
-                  type="button"
-                  aria-label={`Show ${item.label}`}
-                  onClick={() => setActive(index)}
-                  className={cn(
-                    "h-1.5 rounded-full transition-all duration-300",
-                    active === index ? "w-6 bg-brand-cyan" : "w-1.5 bg-white/20 hover:bg-white/40",
-                  )}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>

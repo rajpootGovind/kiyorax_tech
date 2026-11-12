@@ -24,7 +24,11 @@ export function PortfolioGallery() {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter projects by category">
+      <div
+        className="flex flex-wrap items-center gap-2"
+        role="group"
+        aria-label="Filter projects by category"
+      >
         {portfolioFilters.map((item) => (
           <button
             key={item}
@@ -34,14 +38,14 @@ export function PortfolioGallery() {
             className={cn(
               "rounded-full border px-4 py-2 text-[12px] font-medium transition-all duration-300",
               filter === item
-                ? "border-white/20 bg-white text-ink"
-                : "border-white/10 text-white/45 hover:border-white/25 hover:text-white/80",
+                ? "border-ink bg-ink text-white"
+                : "border-line bg-white text-ink/65 hover:border-ink/25 hover:text-ink",
             )}
           >
             {item}
           </button>
         ))}
-        <span className="ml-auto hidden font-mono text-[10px] uppercase tracking-[0.18em] text-white/25 sm:block">
+        <span className="ml-auto hidden text-[10px] font-semibold uppercase tracking-[0.12em] text-ink/65 sm:block">
           {filtered.length} {filtered.length === 1 ? "concept" : "concepts"}
         </span>
       </div>
@@ -62,48 +66,48 @@ export function PortfolioGallery() {
             >
               <Link
                 href={`/portfolio/${featured.slug}`}
-                className="group grid overflow-hidden rounded-3xl border border-white/[0.09] bg-ink-soft transition-all duration-500 hover:border-white/[0.18] lg:grid-cols-2"
+                className="group grid overflow-hidden rounded-2xl border border-line bg-white transition-all duration-500 hover:border-ink/20 hover:shadow-[0_30px_60px_-45px_rgba(19,41,61,0.45)] lg:grid-cols-2"
               >
-                <div className="relative h-[300px] overflow-hidden sm:h-[360px] lg:h-auto lg:min-h-[420px]">
+                <div className="relative min-h-[280px] overflow-hidden border-b border-line sm:min-h-[340px] lg:border-b-0 lg:border-r">
                   <ProjectPreview project={featured} />
-                  <span className="absolute left-5 top-5 rounded-full border border-white/10 bg-ink/70 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-white/60 backdrop-blur-md">
+                  <span className="absolute left-5 top-5 rounded-full border border-line bg-white/90 px-3 py-1.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-ink/65 backdrop-blur-sm">
                     {featured.category}
                   </span>
-                  <span className="absolute right-5 top-5 rounded-full border border-brand-cyan/20 bg-brand-cyan/10 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-brand-cyan/80 backdrop-blur-md">
+                  <span className="absolute right-5 top-5 rounded-full bg-ink/80 px-3 py-1.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-white/85 backdrop-blur-sm">
                     Featured concept
                   </span>
                 </div>
-                <div className="flex flex-col justify-center p-7 sm:p-10">
-                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                <div className="flex flex-col justify-center p-7 sm:p-9">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-sky">
                     {featured.subtitle}
                   </p>
-                  <h2 className="mt-3 text-[clamp(1.7rem,3vw,2.4rem)] font-semibold tracking-tight text-white">
+                  <h2 className="mt-3 text-[clamp(1.6rem,2.8vw,2.2rem)] font-bold tracking-tight text-ink">
                     {featured.title}
                   </h2>
-                  <p className="mt-4 max-w-lg text-[13.5px] leading-relaxed text-white/45">
+                  <p className="mt-3 max-w-lg text-[13px] leading-relaxed text-muted">
                     {featured.summary}
                   </p>
-                  <ul className="mt-6 space-y-2">
+                  <ul className="mt-5 space-y-2">
                     {featured.features.slice(0, 3).map((feature) => (
-                      <li key={feature} className="flex items-center gap-2.5 text-[12px] text-white/40">
-                        <Check className="h-3.5 w-3.5 text-brand-cyan/60" aria-hidden="true" />
+                      <li key={feature} className="flex items-center gap-2.5 text-[12px] text-ink/65">
+                        <Check className="h-3.5 w-3.5 text-sky" aria-hidden="true" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
                     {featured.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[8.5px] uppercase tracking-[0.12em] text-white/30"
+                        className="rounded-full border border-line bg-paper px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.08em] text-ink/65"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 text-[13px] font-medium text-white">
+                  <span className="mt-7 inline-flex items-center gap-2 text-[13px] font-semibold text-ink">
                     View case study
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </span>
                 </div>
               </Link>

@@ -1,10 +1,10 @@
 export const site = {
   name: "KiyoraX Technologies",
   shortName: "KiyoraX",
-  tagline: "Technology That Moves Businesses Forward.",
-  positioning: "Building Intelligent Digital Experiences.",
+  tagline: "A technology partner you can trust.",
+  positioning: "Technology, made human.",
   description:
-    "KiyoraX Technologies builds innovative digital solutions that help businesses operate smarter, connect better, and grow faster.",
+    "KiyoraX Technologies helps businesses turn ideas into dependable digital products through modern engineering, thoughtful design, and intelligent technology.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "hello@kiyorax.com",
   phone: "+91 90000 00000",
@@ -15,10 +15,10 @@ export const site = {
 
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Our Team", href: "/team" },
+  { label: "Team", href: "/team" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -37,6 +37,7 @@ export const serviceOptions = [
   "Institutional Website",
   "Web Application Development",
   "Mobile Application Development",
+  "SaaS Development",
   "AI Integration",
   "Digital Marketing",
   "WordPress Development",

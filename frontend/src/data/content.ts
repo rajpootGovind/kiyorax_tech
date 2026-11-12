@@ -1,66 +1,66 @@
 export const trustHighlights = [
   {
-    title: "Custom Software Development",
-    description: "Purpose-built platforms, not repurposed templates.",
-    icon: "code",
+    title: "Business-focused thinking",
+    description: "We start with what the business needs to achieve.",
+    icon: "target",
   },
   {
-    title: "Business Automation",
-    description: "Workflows that remove repetitive manual work.",
-    icon: "workflow",
+    title: "Thoughtful product design",
+    description: "Interfaces shaped around real tasks, not decoration.",
+    icon: "puzzle",
   },
   {
-    title: "Scalable Digital Products",
-    description: "Architecture that holds up as you grow.",
+    title: "Reliable engineering",
+    description: "Code your team can maintain long after launch.",
+    icon: "shield-check",
+  },
+  {
+    title: "Scalable technology",
+    description: "Foundations that hold up as the product grows.",
     icon: "layers",
   },
   {
-    title: "AI-Powered Solutions",
-    description: "Intelligence applied where it earns its place.",
-    icon: "sparkles",
-  },
-  {
-    title: "Dedicated Technology Team",
-    description: "Engineers and strategists working as one.",
-    icon: "users",
+    title: "Long-term partnership",
+    description: "We stay involved after the invoice is paid.",
+    icon: "handshake",
   },
 ];
 
 export const whyChooseUs = [
   {
-    title: "Business-First Approach",
+    title: "We understand the business first",
     description:
-      "We understand the business requirement before choosing the technology. The right stack is a consequence of the problem, not the starting point.",
+      "Before choosing a technology, we understand what the business is trying to achieve, who it serves, and what would make the project worthwhile.",
     icon: "target",
   },
   {
-    title: "Tailored Solutions",
+    title: "We build practical solutions",
     description:
-      "We develop around individual business needs — your workflow, your customers, your constraints — rather than bending your process to a template.",
+      "The best solution is the one your team can use and maintain. We keep scope honest and avoid complexity that only looks impressive.",
     icon: "puzzle",
   },
   {
-    title: "Modern Technology",
+    title: "We care about quality",
     description:
-      "We use modern frameworks and tools to build scalable products with a foundation that will still make sense years from now.",
-    icon: "cpu",
-  },
-  {
-    title: "Quality-Focused Development",
-    description:
-      "We prioritise maintainable code, usability, and performance. Quality is measured in how the product behaves after launch, not just at delivery.",
+      "Clean architecture, readable code, and considered testing. Quality is measured by how the product behaves months after handover.",
     icon: "shield-check",
   },
   {
-    title: "Transparent Communication",
+    title: "We design for real people",
     description:
-      "We believe in clear communication throughout the project lifecycle: honest timelines, visible progress, and no surprises at handover.",
+      "Every interface decision should remove friction or build confidence. We design around the people who will use the product every day.",
+    icon: "pen-tool",
+  },
+  {
+    title: "We communicate clearly",
+    description:
+      "Visible progress, honest timelines, and no surprises. You always know what is being built, why, and what comes next.",
     icon: "messages",
   },
   {
-    title: "Long-Term Partnership",
+    title: "We think long term",
     description:
-      "We aim to build lasting client relationships beyond project delivery, supporting the product as your business and requirements evolve.",
+      "A launch is the beginning of a product's life. We plan for ownership, support, and whatever the next version needs.",
     icon: "handshake",
   },
 ];
@@ -68,75 +68,81 @@ export const whyChooseUs = [
 export const processSteps = [
   {
     number: "01",
-    title: "Discovery",
+    title: "Discover",
     description:
-      "Understand the client's business, requirements, and goals. We ask the questions that shape the right solution.",
+      "We listen first, understand the business problem, and agree on what success should look like.",
     detail: "Stakeholder conversations, requirement mapping, constraint analysis.",
   },
   {
     number: "02",
-    title: "Strategy & Planning",
+    title: "Plan",
     description:
-      "Define the solution, features, architecture, and roadmap. Every milestone has a clear purpose and definition of done.",
+      "We define the scope, architecture, and milestones so everyone knows what is being built and when.",
     detail: "Scope definition, system architecture, milestone plan, risk review.",
   },
   {
     number: "03",
-    title: "UI/UX Design",
+    title: "Design",
     description:
-      "Create intuitive, attractive, and user-friendly experiences. Interfaces are designed around real tasks, not decoration.",
+      "We shape the experience around real tasks, then refine it with you before a line of production code.",
     detail: "Information architecture, wireframes, visual system, prototyping.",
   },
   {
     number: "04",
-    title: "Development",
+    title: "Build",
     description:
-      "Build secure, scalable, and maintainable applications with regular, reviewable progress and no black boxes.",
+      "We engineer in reviewable milestones with clean code, staging previews, and clear communication.",
     detail: "Sprint delivery, code reviews, API integration, staging environments.",
   },
   {
     number: "05",
-    title: "Testing & QA",
+    title: "Launch",
     description:
-      "Validate functionality, responsiveness, performance, and reliability across real devices and realistic usage.",
-    detail: "Functional testing, cross-device checks, performance audits, fixes.",
+      "We test across devices, deploy carefully, and hand over a product your team understands.",
+    detail: "Functional testing, performance checks, deployment, documentation.",
   },
   {
     number: "06",
-    title: "Launch & Support",
+    title: "Support",
     description:
-      "Deploy the solution and provide ongoing support where agreed, so the product keeps performing after day one.",
-    detail: "Deployment, monitoring, documentation, maintenance planning.",
+      "We stay close after release — monitoring, improving, and helping the product evolve with the business.",
+    detail: "Maintenance planning, monitoring, security updates, enhancements.",
   },
 ];
 
 /**
- * Placeholder testimonials only. Real client feedback will replace these
- * once written approval has been received.
+ * These are KiyoraX commitments, not client testimonials. Real client feedback
+ * will be added only with written permission.
  */
-export const testimonials = [
+export const commitments = [
   {
-    quote:
-      "This space is reserved for a verified KiyoraX client. We publish testimonials only with written permission, so every story you read here will be real.",
-    name: "Client testimonial",
-    role: "Verified feedback pending",
-    company: "KiyoraX partner",
-    placeholder: true,
+    statement:
+      "You will always know what is being built, why it matters, and what comes next.",
+    label: "Clear communication",
   },
   {
-    quote:
-      "We would rather show one genuine partnership story than ten invented ones. As client approvals come in, their words will appear in this space.",
-    name: "Client testimonial",
-    role: "Verified feedback pending",
-    company: "KiyoraX partner",
-    placeholder: true,
+    statement:
+      "We will tell you when a simpler solution is the better one, even if it means less work for us.",
+    label: "Honest advice",
   },
   {
-    quote:
-      "Every engagement starts with a conversation and ends with something we can stand behind. When a client chooses to share their experience, it will be featured here.",
-    name: "Client testimonial",
-    role: "Verified feedback pending",
-    company: "KiyoraX partner",
-    placeholder: true,
+    statement:
+      "The people in your first conversation stay accountable for the outcome.",
+    label: "Direct ownership",
+  },
+  {
+    statement:
+      "We design for the person who uses the product every day, not the person watching the demo.",
+    label: "Real usability",
+  },
+  {
+    statement:
+      "Your team will be able to understand and maintain what we build.",
+    label: "Clean handover",
+  },
+  {
+    statement:
+      "We plan for the months after launch, not only the day the invoice is paid.",
+    label: "Long-term support",
   },
 ];

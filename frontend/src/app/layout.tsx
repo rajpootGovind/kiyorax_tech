@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Sora } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { site } from "@/data/site";
 import { absoluteUrl } from "@/lib/utils";
 import "./globals.css";
 
-const sora = Sora({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -18,30 +18,25 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Building Intelligent Digital Experiences`,
+    default: "KiyoraX Technologies — A Technology Partner You Can Trust",
     template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
   keywords: [
     "KiyoraX Technologies",
-    "web development company",
+    "technology partner",
+    "website development company",
     "custom CRM development",
     "e-commerce development",
     "SaaS development",
+    "web application development",
     "AI integration",
-    "digital marketing agency",
-    "education CRM",
-    "mobile app development",
+    "digital marketing",
+    "educational platforms",
     "Pune technology company",
   ],
   authors: [{ name: site.name, url: site.url }],
@@ -53,12 +48,12 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: absoluteUrl("/"),
     siteName: site.name,
-    title: `${site.name} — Building Intelligent Digital Experiences`,
+    title: "KiyoraX Technologies — A Technology Partner You Can Trust",
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Building Intelligent Digital Experiences`,
+    title: "KiyoraX Technologies — A Technology Partner You Can Trust",
     description: site.description,
   },
   robots: {
@@ -77,8 +72,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#05060a",
-  colorScheme: "dark",
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 const organizationSchema = {
@@ -93,6 +88,11 @@ const organizationSchema = {
       description: site.description,
       email: site.email,
       telephone: site.phone,
+      founder: {
+        "@type": "Person",
+        name: "Ramkrushna Vishnu Gaikwad",
+        jobTitle: "Founder & CEO",
+      },
       address: {
         "@type": "PostalAddress",
         addressLocality: "Pune",
@@ -119,11 +119,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${sora.variable} ${inter.variable} ${jetbrains.variable}`}>
+    <html lang="en-IN" className={`${manrope.variable} ${inter.variable}`}>
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-white"
         >
           Skip to content
         </a>

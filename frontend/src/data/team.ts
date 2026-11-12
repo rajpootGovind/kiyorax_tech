@@ -1,11 +1,14 @@
+import { images } from "./images";
+
 export type TeamMember = {
   id: string;
   name: string;
   role: string;
+  focus: string;
   bio: string;
   leadership: boolean;
   initials: string;
-  accent: string;
+  portrait: keyof typeof images.team;
 };
 
 export const team: TeamMember[] = [
@@ -13,84 +16,94 @@ export const team: TeamMember[] = [
     id: "ramkrushna-gaikwad",
     name: "Ramkrushna Vishnu Gaikwad",
     role: "Founder & CEO",
-    bio: "Ramkrushna Vishnu Gaikwad is the Founder and CEO of KiyoraX Technologies, driven by a vision to build innovative technology solutions for modern businesses. He leads business strategy, innovation, and organizational growth, focusing on delivering impactful digital products including websites, web applications, mobile applications, e-commerce platforms, and SaaS solutions that empower businesses to grow in the digital era.",
+    focus: "Vision, strategy, and the products behind it.",
+    bio: "Leads company vision, business strategy, innovation, and digital product development across websites, applications, e-commerce, and SaaS.",
     leadership: true,
     initials: "RG",
-    accent: "from-[#00c8f5]/40 via-[#286bff]/25 to-[#852eff]/40",
+    portrait: "ramkrushna-gaikwad",
   },
   {
     id: "govind-rajpoot",
     name: "Govind Rajpoot",
     role: "CTO & Co-Founder",
-    bio: "Govind Rajpoot is the CTO and Co-Founder of KiyoraX Technologies, bringing hands-on software development experience and a strong focus on modern application architecture. He leads technical strategy, oversees development workflows, and manages engineering teams to deliver scalable, maintainable, and production-ready software solutions. His expertise spans full-stack development, backend engineering, and building reliable digital products aligned with business requirements.",
+    focus: "Technical direction and dependable engineering.",
+    bio: "Leads technical strategy and engineering, with hands-on experience in software development, system architecture, and scalable, maintainable application development.",
     leadership: true,
     initials: "GR",
-    accent: "from-[#286bff]/40 via-[#00c8f5]/20 to-[#852eff]/35",
+    portrait: "govind-rajpoot",
   },
   {
     id: "bhagyavati-kewat",
     name: "Bhagyavati Kewat",
     role: "Co-Founder",
-    bio: "Bhagyavati Kewat is the Co-Founder of KiyoraX Technologies, contributing to the company's vision, strategic growth, and innovation. She is passionate about technology, business development, and building impactful digital solutions that help businesses grow and succeed in the digital era.",
+    focus: "Growth, partnerships, and digital solutions.",
+    bio: "Contributes to company vision, strategic growth, innovation, business development, and digital solutions.",
     leadership: true,
     initials: "BK",
-    accent: "from-[#852eff]/40 via-[#286bff]/20 to-[#00c8f5]/35",
+    portrait: "bhagyavati-kewat",
   },
   {
     id: "nidhi-dubey",
     name: "Nidhi Dubey",
     role: "Performance Marketing Head",
-    bio: "Nidhi Dubey is a digital marketing professional with two years of experience in performance marketing and social media marketing. She specializes in managing Meta Ads and Google Ads campaigns, focusing on audience targeting, campaign optimization, and improving marketing performance to achieve measurable business goals.",
+    focus: "Campaigns measured by real outcomes.",
+    bio: "Two years of performance and social media marketing experience, including Meta Ads, Google Ads, audience targeting, and campaign optimisation.",
     leadership: false,
     initials: "ND",
-    accent: "from-[#00c8f5]/35 via-[#286bff]/20 to-[#852eff]/35",
+    portrait: "nidhi-dubey",
   },
   {
     id: "amar-rajpoot",
     name: "Amar Rajpoot",
     role: "Full Stack Developer",
-    bio: "Amar Rajpoot is a Full Stack Developer with hands-on experience in developing and maintaining production-level web applications. He works across frontend and backend technologies, focusing on building functional, scalable, and user-friendly digital solutions.",
+    focus: "Frontend and backend, working as one.",
+    bio: "Works across frontend and backend development to build practical, scalable, and user-friendly applications.",
     leadership: false,
     initials: "AR",
-    accent: "from-[#286bff]/35 via-[#00c8f5]/20 to-[#852eff]/30",
+    portrait: "amar-rajpoot",
   },
   {
     id: "riddhi-ajmera",
     name: "Riddhi Ajmera",
     role: "Social Media & Digital Marketing Executive",
-    bio: "Riddhi Ajmera is a social media and digital marketing professional with six years of experience in planning and executing social media strategies. She focuses on building engaging online communities, developing content strategies, managing social media platforms, and strengthening brand presence.",
+    focus: "Content, community, and brand presence.",
+    bio: "Six years of experience in social media planning, content strategy, online communities, and brand presence.",
     leadership: false,
     initials: "RA",
-    accent: "from-[#852eff]/35 via-[#286bff]/20 to-[#00c8f5]/30",
+    portrait: "riddhi-ajmera",
   },
   {
     id: "sneha-patil",
     name: "Sneha Abhijit Patil",
-    role: "Team Leader – Telecalling",
-    bio: "Sneha Abhijit Patil leads the telecalling team with over six years of sales experience across the technology and financial sectors. She drives outreach strategies, leads live solution demonstrations, and empowers her team to build strong customer relationships through effective communication and a customer-focused approach.",
+    role: "Team Leader — Telecalling",
+    focus: "Outreach, demonstrations, and relationships.",
+    bio: "Over six years of experience across technology and financial sectors, with strengths in outreach, live demonstrations, and customer relationships.",
     leadership: false,
     initials: "SP",
-    accent: "from-[#00c8f5]/35 via-[#852eff]/20 to-[#286bff]/30",
+    portrait: "sneha-abhijit-patil",
   },
   {
     id: "mala-dodeja",
     name: "Mala Dodeja",
     role: "Lead Generation Executive",
-    bio: "Mala Dodeja is a dedicated professional focused on lead generation, teamwork, and contributing to business growth. She brings a proactive attitude, a commitment to continuous learning, and a professional approach to identifying potential opportunities and supporting the sales process.",
+    focus: "Careful research and consistent follow-through.",
+    bio: "Focuses on teamwork, continuous learning, lead generation, and professional, results-oriented work.",
     leadership: false,
     initials: "MD",
-    accent: "from-[#286bff]/35 via-[#852eff]/20 to-[#00c8f5]/30",
+    portrait: "mala-dodeja",
   },
   {
     id: "shraddha-tripathi",
     name: "Shraddha Tripathi",
     role: "Sales Executive",
-    bio: "Shraddha Tripathi is a results-driven Sales Executive focused on building strong client relationships, understanding customer requirements, and driving business growth through effective communication and customer-focused solutions.",
+    focus: "Listening closely, then finding the right fit.",
+    bio: "Focuses on client relationships, understanding customer requirements, communication, and business growth.",
     leadership: false,
     initials: "ST",
-    accent: "from-[#852eff]/35 via-[#00c8f5]/20 to-[#286bff]/30",
+    portrait: "shraddha-tripathi",
   },
 ];
 
+export const founder = team[0];
 export const leadership = team.filter((member) => member.leadership);
 export const specialists = team.filter((member) => !member.leadership);

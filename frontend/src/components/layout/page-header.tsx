@@ -23,34 +23,33 @@ export function PageHeader({
   children,
 }: PageHeaderProps) {
   return (
-    <section className="relative overflow-hidden border-b border-white/[0.07] bg-ink pb-14 pt-32 sm:pb-18 sm:pt-36">
-      <div aria-hidden="true" className="absolute inset-0 bg-grid opacity-50 mask-fade-b" />
+    <section className="relative overflow-hidden border-b border-line bg-white pb-14 pt-32 sm:pb-16 sm:pt-36">
+      <div aria-hidden="true" className="absolute inset-0 bg-grid-soft opacity-70 mask-fade-b" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-32 h-[480px] w-[480px] rounded-full bg-brand-blue/[0.13] blur-[120px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-24 h-80 w-80 rounded-full bg-brand-violet/[0.09] blur-[100px]"
+        className="pointer-events-none absolute -right-24 -top-32 h-[460px] w-[460px] rounded-full bg-sky/10 blur-[120px]"
       />
       <div className="container-x relative">
         <Reveal>
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">
-            <Link href="/" className="transition-colors hover:text-white/70">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.14em] text-ink/65"
+          >
+            <Link href="/" className="transition-colors hover:text-ink">
               Home
             </Link>
             <ChevronRight className="h-3 w-3" aria-hidden="true" />
-            <span className="text-white/55" aria-current="page">
+            <span className="text-ink/65" aria-current="page">
               {breadcrumb}
             </span>
           </nav>
         </Reveal>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+        <div className="mt-9 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
           <div className="lg:col-span-8">
             <Reveal delay={0.05}>
-              <p className="eyebrow text-white/40">{eyebrow}</p>
-              <h1 className="mt-5 max-w-3xl text-[clamp(2.4rem,5vw,4.4rem)] font-semibold leading-[1.01] tracking-[-0.04em] text-white">
+              <p className="eyebrow">{eyebrow}</p>
+              <h1 className="mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4rem)] font-bold leading-[1.03] tracking-[-0.04em] text-ink">
                 {title}
               </h1>
               {description ? (
@@ -64,13 +63,13 @@ export function PageHeader({
 
           {meta && meta.length > 0 ? (
             <Reveal delay={0.12} className="lg:col-span-4">
-              <dl className="grid grid-cols-2 gap-4 border-t border-white/[0.08] pt-5 lg:border-t-0 lg:pt-0">
+              <dl className="grid grid-cols-2 gap-x-4 gap-y-5 border-t border-line pt-5">
                 {meta.map((item) => (
                   <div key={item.label}>
-                    <dt className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/25">
+                    <dt className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-ink/65">
                       {item.label}
                     </dt>
-                    <dd className="mt-1.5 text-[13px] text-white/65">{item.value}</dd>
+                    <dd className="mt-1.5 text-[13px] text-ink/70">{item.value}</dd>
                   </div>
                 ))}
               </dl>

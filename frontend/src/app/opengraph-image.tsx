@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "KiyoraX Technologies — Building Intelligent Digital Experiences";
+export const alt = "KiyoraX Technologies — Great ideas deserve a technology partner you can trust.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,9 +14,9 @@ export default async function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#05060a",
-          color: "#ffffff",
-          padding: "64px 72px",
+          background: "#ffffff",
+          color: "#13293d",
+          padding: "60px 72px",
           position: "relative",
           fontFamily: "sans-serif",
         }}
@@ -24,75 +24,78 @@ export default async function OpengraphImage() {
         <div
           style={{
             position: "absolute",
-            top: -180,
+            top: -200,
             right: -120,
-            width: 620,
-            height: 620,
+            width: 640,
+            height: 640,
             borderRadius: 999,
-            background: "radial-gradient(circle, rgba(0,200,245,0.28), rgba(5,6,10,0) 68%)",
+            background: "radial-gradient(circle, rgba(43,156,240,0.20), rgba(255,255,255,0) 68%)",
           }}
         />
         <div
           style={{
             position: "absolute",
             bottom: -260,
-            left: -100,
-            width: 620,
-            height: 620,
+            left: -160,
+            width: 600,
+            height: 600,
             borderRadius: 999,
-            background: "radial-gradient(circle, rgba(133,46,255,0.24), rgba(5,6,10,0) 68%)",
+            background: "radial-gradient(circle, rgba(19,41,61,0.08), rgba(255,255,255,0) 68%)",
           }}
         />
 
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div
             style={{
-              width: 64,
-              height: 64,
-              borderRadius: 18,
-              background: "linear-gradient(135deg, #00C8F5, #286BFF 52%, #852EFF)",
+              width: 58,
+              height: 58,
+              borderRadius: 16,
+              background: "#0A1E2E",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 34,
+              fontSize: 30,
               fontWeight: 700,
-              color: "#ffffff",
+              color: "#5FC2FF",
             }}
           >
             K
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 27, fontWeight: 600, letterSpacing: -1 }}>KiyoraX</div>
-            <div style={{ fontSize: 12, letterSpacing: 6, color: "rgba(255,255,255,0.42)" }}>
+            <div style={{ fontSize: 25, fontWeight: 700, letterSpacing: -0.8 }}>
+              KiyoraX
+            </div>
+            <div style={{ fontSize: 11, letterSpacing: 5, color: "rgba(19,41,61,0.45)" }}>
               TECHNOLOGIES
             </div>
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", maxWidth: 900 }}>
+        <div style={{ display: "flex", flexDirection: "column", maxWidth: 960 }}>
           <div
             style={{
-              fontSize: 18,
-              letterSpacing: 3,
+              fontSize: 16,
+              letterSpacing: 2.5,
               textTransform: "uppercase",
-              color: "#00C8F5",
-              marginBottom: 22,
+              color: "#0f74c9",
+              marginBottom: 20,
+              fontWeight: 600,
             }}
           >
-            Building intelligent digital experiences
+            A technology partner you can trust
           </div>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              fontSize: 74,
-              fontWeight: 600,
-              lineHeight: 1.05,
-              letterSpacing: -3,
+              fontSize: 66,
+              fontWeight: 700,
+              lineHeight: 1.08,
+              letterSpacing: -2.6,
             }}
           >
-            <div>Technology that moves</div>
-            <div>businesses forward.</div>
+            <div>Great ideas deserve a</div>
+            <div>technology partner you can trust.</div>
           </div>
         </div>
 
@@ -101,14 +104,14 @@ export default async function OpengraphImage() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            borderTop: "1px solid rgba(255,255,255,0.12)",
-            paddingTop: 24,
-            fontSize: 18,
-            color: "rgba(255,255,255,0.45)",
+            borderTop: "1px solid rgba(19,41,61,0.14)",
+            paddingTop: 22,
+            fontSize: 17,
+            color: "rgba(19,41,61,0.55)",
           }}
         >
-          <div>Web · CRM · SaaS · AI · Commerce</div>
-          <div style={{ color: "rgba(255,255,255,0.65)" }}>KiyoraX Technologies</div>
+          <div>Websites · Platforms · CRM · AI · Growth</div>
+          <div style={{ color: "#13293d", fontWeight: 600 }}>kiyorax.com</div>
         </div>
       </div>
     ),
